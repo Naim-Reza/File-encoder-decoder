@@ -5,6 +5,7 @@ import java.io.*;
 public class DecodeFile {
     private String outputFileName = null;
     private String dataString = "";
+    private String lineSeparator = "%n";
 
     public void decode(File file) {
         try{
@@ -18,7 +19,7 @@ public class DecodeFile {
             //read the file
             String line = null;
             while ((line = reader.readLine()) != null) dataString += line;
-            String[] dataArray = dataString.split("" + System.lineSeparator());
+            String[] dataArray = dataString.split(lineSeparator);
 
             for (String token : dataArray) System.out.println(token);
         } catch (FileNotFoundException e){
