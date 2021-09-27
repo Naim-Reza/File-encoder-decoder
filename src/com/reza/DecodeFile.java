@@ -1,6 +1,7 @@
 package com.reza;
 
 import java.io.*;
+import java.util.Base64;
 
 public class DecodeFile {
     private String outputFileName = null;
@@ -20,8 +21,27 @@ public class DecodeFile {
             String line = null;
             while ((line = reader.readLine()) != null) dataString += line;
             String[] dataArray = dataString.split(lineSeparator);
+            //close reader
+            reader.close();
 
-            for (String token : dataArray) System.out.println(token);
+            //set output file name
+            outputFileName = dataArray[0];
+            //create new File instance with outputfilename
+            File outputFile = new File(outputFileName);
+            //decode string
+            byte[] fileData = Base64.getDecoder().decode(dataArray[1]);
+
+            //create writer
+            BufferedOutputStream writer = new BufferedOutputStream(new FileOutputStream(outputFile));
+            //write to binary file
+            writer.write(fileData);
+            //close writer stream
+            writer.close();
+
+            //prompt success message
+            System.out.println(file.getName() + " Decoded successfully.");
+            System.out.println("Output filename: " + outputFileName);
+
         } catch (FileNotFoundException e){
             e.printStackTrace();
         } catch (IOException e){
