@@ -7,6 +7,7 @@ public class EncodeFile {
     private String filename = null;
     private String outputFileName = null;
     private String encodedString = "";
+    private String lineSeparator = "%n";
 
     public void encode(File file) {
         try{
@@ -33,7 +34,7 @@ public class EncodeFile {
             //create writer
             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
             //output string
-            String outputString = filename + System.lineSeparator() + encodedString;
+            String outputString = filename + lineSeparator + encodedString;
             //write the output to the file
             writer.write(outputString);
             //close writer
