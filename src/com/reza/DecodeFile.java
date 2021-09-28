@@ -6,7 +6,7 @@ import java.util.Base64;
 public class DecodeFile {
     private String outputFileName = null;
     private String dataString = "";
-    private String lineSeparator = "%n";
+    private String lineSeparator = " ";
 
     public void decode(File file) {
         try{

@@ -7,7 +7,7 @@ public class EncodeFile {
     private String filename = null;
     private String outputFileName = null;
     private String encodedString = "";
-    private String lineSeparator = "%n";
+    private String lineSeparator = " ";
 
     public void encode(File file) {
         try{
