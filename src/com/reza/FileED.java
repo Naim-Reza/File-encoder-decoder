@@ -28,7 +28,21 @@ public class FileED {
                     System.out.println("Invalid option!! Try again.");
             }
         } catch (ArrayIndexOutOfBoundsException e){
-            e.printStackTrace();
+            displayHelp();
         }
+    }
+
+    private static void displayHelp(){
+        System.out.println();
+        System.out.println("To encode: java FileED [option] <source-file> <destination> [encoder-method]");
+        System.out.println("To encode: java FileED [option] <encoded-file>");
+        System.out.println("Available Encoder: base64, character");
+        System.out.println("option:");
+        System.out.println("\tencode:\t\t To encode a file");
+        System.out.println("\tdecode:\t\t To decode a file");
+        System.out.println("encoder-method:");
+        System.out.println("\tbase64:\t\t To use base64 encoding.");
+        System.out.println("\tcharacter:\t\t To use character encoding.");
+        System.out.println();
     }
 }
