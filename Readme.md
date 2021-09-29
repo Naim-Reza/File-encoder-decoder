@@ -35,7 +35,7 @@ provides the type of encoding that can be applied.
 * To encode a file named cat.jpg use the following command
 
 ```shell
-java FilED encode cat.jpg cat_out base64
+java FileED encode cat.jpg cat_out base64
 ```
 
 * To decode a file named cat_out.txt use the following command
