@@ -2,7 +2,7 @@ package com.reza;
 
 import java.io.File;
 
-public class FileEncoderDecoder {
+public class FileED {
 
     public static void main(String[] args) {
         //create instance of EncodeFile and DecodeFile class
