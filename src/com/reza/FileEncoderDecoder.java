@@ -2,7 +2,7 @@ package com.reza;
 
 import java.io.File;
 
-public class Main {
+public class FileEncoderDecoder {
 
     public static void main(String[] args) {
         //create instance of EncodeFile and DecodeFile class
@@ -17,6 +17,8 @@ public class Main {
             //execute corresponding actions
             switch (option){
                 case "encode":
+                    String outputFileName = args[2];
+                    String encodingMethod = args[3];
                     encoder.encode(file);
                     break;
                 case "decode":
