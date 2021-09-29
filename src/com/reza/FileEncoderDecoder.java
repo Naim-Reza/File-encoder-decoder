@@ -19,7 +19,7 @@ public class FileEncoderDecoder {
                 case "encode":
                     String outputFileName = args[2];
                     String encodingMethod = args[3];
-                    encoder.encode(file);
+                    encoder.encode(file, outputFileName, encodingMethod);
                     break;
                 case "decode":
                     decoder.decode(file);
