@@ -7,6 +7,9 @@ public class DecodeFile {
     private String outputFileName = null;
     private String dataString = "";
     private String lineSeparator = " ";
+    private String charSeparator = ";";
+    private String decodingMethod = null;
+    private byte[] fileData;
 
     public void decode(File file) {
         try{
@@ -26,10 +29,23 @@ public class DecodeFile {
 
             //set output file name
             outputFileName = dataArray[0];
+            //set decoding method
+            decodingMethod = dataArray[1];
             //create new File instance with outputfilename
             File outputFile = new File(outputFileName);
+
             //decode string
-            byte[] fileData = Base64.getDecoder().decode(dataArray[1]);
+            switch (decodingMethod){
+                case "base64":
+                    useBase64Decoding(dataArray[2]);
+                    break;
+                case "character":
+                    useCharacterDecoding(dataArray[2]);
+                    break;
+                default:
+                    System.out.println(decodingMethod + " decoding method is not available.");
+                    return;
+            }
 
             //create writer
             BufferedOutputStream writer = new BufferedOutputStream(new FileOutputStream(outputFile));
@@ -48,5 +64,17 @@ public class DecodeFile {
             e.printStackTrace();
         }
 
+    }
+
+    private void useBase64Decoding(String data){
+        fileData = Base64.getDecoder().decode(data);
+    }
+
+    private void useCharacterDecoding(String data){
+        String[] charArray = data.split(charSeparator);
+        byte[] byteArray = new byte[charArray.length];
+        for (int i = 0; i < charArray.length; i++) byteArray[i] = Byte.parseByte(charArray[i]);
+
+        fileData = byteArray;
     }
 }

@@ -7,6 +7,7 @@ public class EncodeFile {
     private String outputFileName = null;
     private String encodedString = "";
     private String lineSeparator = " ";
+    private String charSeparator = ";";
 
     public void encode(File file, String destination, String encodingMethod) {
         try{
@@ -42,7 +43,7 @@ public class EncodeFile {
             //create writer
             BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
             //output string
-            String outputString = outputFile.getName() + lineSeparator + encodedString;
+            String outputString = file.getName() + lineSeparator + encodingMethod + lineSeparator + encodedString;
             //write the output to the file
             writer.write(outputString);
             //close writer
@@ -67,6 +68,6 @@ public class EncodeFile {
         //reset encodedString instance variable
         encodedString = "";
         //encode data bytes to string
-        for (byte b : data) encodedString += Byte.toString(b);
+        for (byte b : data) encodedString += (Byte.toString(b) + charSeparator);
     }
 }
